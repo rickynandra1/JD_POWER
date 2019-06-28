@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>testCase2</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">testCase2</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/qa/Assignment3/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.navbar-toggle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=View ads</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.navbar-toggle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.navbar-toggle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Post an Ad</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=sellerName</td>
+	<td>Akash</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=address</td>
+	<td>Unit 213 553 Vanier Dr</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=city</td>
+	<td>Kitchener</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phoneNumber</td>
+	<td>4379822221</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=emailAddress</td>
+	<td>milankyada@gmail.com</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=vehicleMake</td>
+	<td>label=Ford</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=year</td>
+	<td>label=2015</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.form-group &gt; button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=input-image-hidden</td>
+	<td>/home/milan/Desktop/Assignment3/car/cq5dam.web.1280.1280.jpeg</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=triggerClick</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=myModal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.navbar-toggle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=View ads</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//tbody[@id='demo']/tr[7]/td[3]</td>
+	<td>Akash</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

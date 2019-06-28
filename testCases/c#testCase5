@@ -1,0 +1,121 @@
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
+
+namespace SeleniumTests
+{
+    [TestFixture]
+    public class CTestCase5
+    {
+        private IWebDriver driver;
+        private StringBuilder verificationErrors;
+        private string baseURL;
+        private bool acceptNextAlert = true;
+        
+        [SetUp]
+        public void SetupTest()
+        {
+            driver = new FirefoxDriver();
+            baseURL = "http://localhost/";
+            verificationErrors = new StringBuilder();
+        }
+        
+        [TearDown]
+        public void TeardownTest()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+                // Ignore errors if unable to close the browser
+            }
+            Assert.AreEqual("", verificationErrors.ToString());
+        }
+        
+        [Test]
+        public void TheCTestCase5Test()
+        {
+            driver.Navigate().GoToUrl(baseURL + "/qa/Assignment3/");
+            driver.FindElement(By.LinkText("QA")).Click();
+            driver.FindElement(By.Id("sellerName")).Clear();
+            driver.FindElement(By.Id("sellerName")).SendKeys("vimal");
+            driver.FindElement(By.Id("city")).Clear();
+            driver.FindElement(By.Id("city")).SendKeys("Kitchener");
+            driver.FindElement(By.Id("phoneNumber")).Clear();
+            driver.FindElement(By.Id("phoneNumber")).SendKeys("8758580590");
+            driver.FindElement(By.Id("emailAddress")).Clear();
+            driver.FindElement(By.Id("emailAddress")).SendKeys("vgajera@gmail.com");
+            new SelectElement(driver.FindElement(By.Id("vehicleMake"))).SelectByText("Ford");
+            new SelectElement(driver.FindElement(By.Id("vehicleMake"))).SelectByText("Dodge");
+            new SelectElement(driver.FindElement(By.Id("year"))).SelectByText("2015");
+            new SelectElement(driver.FindElement(By.Id("year"))).SelectByText("2016");
+            driver.FindElement(By.CssSelector("div.form-group > button")).Click();
+            driver.FindElement(By.Id("input-image-hidden")).Clear();
+            driver.FindElement(By.Id("input-image-hidden")).SendKeys("/home/milan/Desktop/Assignment3/car/cq5dam.web.1280.1280.jpeg");
+            new SelectElement(driver.FindElement(By.Id("model"))).SelectByText("Grand Caravan");
+            driver.FindElement(By.Id("submit")).Click();
+            try
+            {
+                Assert.AreEqual("address can't be empty.", driver.FindElement(By.CssSelector("p")).Text);
+            }
+            catch (AssertionException e)
+            {
+                verificationErrors.Append(e.Message);
+            }
+            driver.FindElement(By.Id("address")).Clear();
+            driver.FindElement(By.Id("address")).SendKeys("test");
+            driver.FindElement(By.Id("submit")).Click();
+            driver.FindElement(By.Id("triggerClick")).Click();
+            driver.FindElement(By.Id("myModal")).Click();
+            driver.FindElement(By.CssSelector("button.navbar-toggle")).Click();
+            driver.FindElement(By.LinkText("View ads")).Click();
+        }
+        private bool IsElementPresent(By by)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+        
+        private bool IsAlertPresent()
+        {
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException)
+            {
+                return false;
+            }
+        }
+        
+        private string CloseAlertAndGetItsText() {
+            try {
+                IAlert alert = driver.SwitchTo().Alert();
+                string alertText = alert.Text;
+                if (acceptNextAlert) {
+                    alert.Accept();
+                } else {
+                    alert.Dismiss();
+                }
+                return alertText;
+            } finally {
+                acceptNextAlert = true;
+            }
+        }
+    }
+}

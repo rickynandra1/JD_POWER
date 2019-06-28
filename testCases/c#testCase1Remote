@@ -1,0 +1,67 @@
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using NUnit.Framework;
+using Selenium;
+
+namespace SeleniumTests
+{
+[TestFixture]
+public class c#testCase1Remote
+{
+private ISelenium selenium;
+private StringBuilder verificationErrors;
+
+[SetUp]
+public void SetupTest()
+{
+selenium = new DefaultSelenium("localhost", 4444, "*chrome", "http://localhost/");
+selenium.Start();
+verificationErrors = new StringBuilder();
+}
+
+[TearDown]
+public void TeardownTest()
+{
+try
+{
+selenium.Stop();
+}
+catch (Exception)
+{
+// Ignore errors if unable to close the browser
+}
+Assert.AreEqual("", verificationErrors.ToString());
+}
+
+[Test]
+public void TheC#testCase1RemoteTest()
+{
+			selenium.Open("/qa/Assignment3/index.html");
+			selenium.Type("id=sellerName", "milan");
+			selenium.Type("id=address", "unit 213, 553 vanier Dr");
+			selenium.Type("id=city", "Kitchener");
+			selenium.Type("id=phoneNumber", "4379822221");
+			selenium.Type("id=emailAddress", "milankyada@gmail.com");
+			selenium.Select("id=vehicleMake", "label=Ford");
+			selenium.Select("id=year", "label=2015");
+			selenium.Click("css=div.form-group > button");
+			selenium.Type("id=input-image-hidden", "/home/milan/Desktop/Assignment3/car/01-2013-ford-escape-fd.jpg");
+			selenium.Click("id=submit");
+			selenium.Click("id=triggerClick");
+			selenium.Click("id=myModal");
+			selenium.Click("css=button.navbar-toggle");
+			selenium.Click("link=View ads");
+			selenium.WaitForPageToLoad("30000");
+			try
+			{
+				Assert.AreEqual("ford Escape\nYear: 2015 6", selenium.GetText("//tbody[@id='demo']/tr[2]/td[2]"));
+			}
+			catch (AssertionException e)
+			{
+				verificationErrors.Append(e.Message);
+			}
+}
+}
+}
